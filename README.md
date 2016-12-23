@@ -1,0 +1,5 @@
+##This is a non-real read me file.
+
+Basically just putting this here as a note that I've got the first few whiteboard images, but there's obviously (by some argument more complex) vendor side of the application still to draw out. Though I think a lot of in can be inferred, but it's worth noting I'd like the food trucks (vendors) to have a wide array of settings they can choose from (how far away customers can order, how soon they are told to get their food, max orders they can take, etc) as well as the ability to have invisible components of there menus that would track estimated time for each item and enter physical purchases into their order queue to keep estimates reasonable and still server physical customers.
+
+I also recognize you talked about using this as a way to keep track of pop-up events/etc. which isn't as much discussed here, beyond a mention of being able to favorite things and set notification parameters. More could be done, but right now it's easier to visualize it rather simply in the food truck vendor/customer relationship.
