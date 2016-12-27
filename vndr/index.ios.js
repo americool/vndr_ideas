@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import List from './src/List.js'
 
 export default class vndr extends Component {
   render() {
@@ -26,7 +27,9 @@ export default class vndr extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        <List />
       </View>
+
     );
   }
 }
