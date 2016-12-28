@@ -40,3 +40,6 @@ buck-out/
 \.buckd/
 android/app/libs
 *.keystore
+
+# CONFIG
+src/lib/config.js
