@@ -4,12 +4,12 @@ import { Text, View } from 'react-native';
 import Vendors from './Vendors'
 
 //make Component
-const List = (vendor) => {
+const List = ({vendor}) => {
   const { textStyle, viewStyle } = styles;
 
   return (
     <View style={viewStyle}>
-      <Text style={textStyle}>{ vendor.vndrName } | {vendor.description} | {vendor.distance} mi.</Text>
+      <Text style={textStyle}>{`${vendor.vndrName} | ${vendor.description} | ${vendor.distance} mi.`}</Text>
     </View>
   );
 };
