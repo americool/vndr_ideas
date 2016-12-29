@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import Rebase from 're-base';
 import config from './lib/config'
 
@@ -8,7 +8,9 @@ const base = Rebase.createClass(config);
 class Vendors extends Component {
   constructor(props) {
     super(props)
-    this.state = {data: null}
+    this.state = {
+      data: null
+    }
   }
 
   componentDidMount() {
@@ -26,11 +28,17 @@ class Vendors extends Component {
      }
    });
   }
+
+  renderData() {
+    // console.log(this.state.data)
+    return this.state.data.map(vendor => <List key={vendor.key} vendor={vendor} /> );
+  }
+
   render() {
     console.log(this.state.data)
     return (
-      <View><Text>Foo</Text></View>
-    )
+      <ScrollView> {this.renderData()} </ScrollView>
+    );
   }
 }
 export default Vendors;
