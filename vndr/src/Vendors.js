@@ -1,47 +1,61 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { ListView, Text, View, ScrollView } from 'react-native';
 import Rebase from 're-base';
-import config from './lib/config';
-import List from './List';
+import config from './lib/config'
+import List from "./List"
 
 const base = Rebase.createClass(config);
 
 class Vendors extends Component {
   constructor(props) {
     super(props)
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      data: null
+      dataSource: this.ds,
+      data: null,
+      isLoading: false,
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    this.setState({isLoading: true})
     this.fetchData()
   }
 
   fetchData() {
     base.fetch('vendors', {
-     context: this, // Vendors
-     asArray: true
-   }).then(data => {
-       this.setState({
-         data: data
-       });
-     }
-   );
+      context: this,
+      asArray: true
+    }).then(data => {
+     this.setState({
+       data: data,
+       isLoading: false,
+       dataSource: this.ds.cloneWithRows(data)
+     });
+    }).catch(error => {
+      console.error(error)
+      this.setState({isLoading: false})
+    })
   }
 
-  renderData() {
-    return this.state.data.map(vendors =>
-      <List key={vendors.key} vendor={vendor} />);
+  renderRow(rowData) {
+    return (
+      <List vendor={rowData} />
+    );
   }
 
   render() {
-    let test = this.state.data
-    console.log(this.state.data)
-    console.log(test)
-    return (
-      <View><Text>GA</Text></View>
-    )
+    const {isLoading, dataSource, data} = this.state;
+
+    return !isLoading ?
+      <ScrollView>
+        <ListView
+          dataSource={dataSource}
+          renderRow={(rowData) => this.renderRow(rowData)}
+        >
+        </ListView>
+      </ScrollView>
+      : <Text>Loading</Text>
   }
 }
 export default Vendors;
