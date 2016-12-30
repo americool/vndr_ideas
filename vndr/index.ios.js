@@ -21,10 +21,8 @@ export default class vndr extends Component {
     return (
         <View>
           <Header headerName="List of Vendors" />
-          <ScrollView>
-            <Vendors /> 
-          </ScrollView>
-      </View>
+          <Vendors /> 
+        </View>
     );
   }
 }
