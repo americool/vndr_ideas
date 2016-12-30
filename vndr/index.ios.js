@@ -15,13 +15,15 @@ import {
 import List from './src/List'
 import Header from './src/Header'
 import Vendors from './src/Vendors'
+import NavGuy from './src/NavGuy'
+import MapView from './src/MapView'
 
 export default class vndr extends Component {
-  render() {
+  render( props ) {
     return (
         <View>
-          <Header headerName="List of Vendors" />
-          <Vendors /> 
+          <NavGuy />
+          <Vendors />
         </View>
     );
   }
