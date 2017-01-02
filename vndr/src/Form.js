@@ -28,18 +28,10 @@ class Form extends Component {
   //Not sure if I should make vars const or let - not getting console log
   submitNewVendor() {
     const { name, discription, distance } = this.state;
-    console.log(this.state);
-    var immediatelyAvailableReference = base.push('vndr', {
-    data: { name: name, discription: discription, distance: distance }
-    }).then(newLocation => {
-    var generatedKey = newLocation.key;
-    console.log(newLocation.key)
-    }).catch(err => {
-    console.log("error " + this.state); //handle error
-    });
-    //available immediately, you don't have to wait for the Promise to resolve
-    var generatedKey = immediatelyAvailableReference.key
-    console.log(generatedKey)
+
+    base.push('vendors', {
+      data: { vndrName: name, description: discription, distance: distance } 
+    })
   }
 
   render() {
