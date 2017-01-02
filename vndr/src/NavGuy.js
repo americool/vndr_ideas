@@ -29,7 +29,9 @@ class NavGuy extends Component {
         <Navigator.NavigationBar
           routeMapper={{
            LeftButton: (route, navigator, index, navState) =>
-            { return (<Text>Map View</Text>); },
+            { return (<Text>Map View</Text>);
+              <TouchableHighlight onPress={() => console.log("GA") }  />
+            },
            RightButton: (route, navigator, index, navState) =>
              { return (<Text>List View</Text>); },
            Title: (route, navigator, index, navState) =>
