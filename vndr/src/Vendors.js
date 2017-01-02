@@ -3,7 +3,7 @@ import { ListView, Text } from 'react-native';
 import Rebase from 're-base';
 import config from './lib/config'
 import List from './List'
-import Spinner from './Spinner';
+import {Spinner} from './common';
 
 const base = Rebase.createClass(config);
 
@@ -54,7 +54,6 @@ class Vendors extends Component {
           renderRow={(rowData) => this.renderRow(rowData)}
         >
         </ListView>
-      </ScrollView>
         : <Spinner />
   }
 }
