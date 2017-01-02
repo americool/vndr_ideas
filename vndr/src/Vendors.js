@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { ListView, Text } from 'react-native';
+import { ListView } from 'react-native';
 import Rebase from 're-base';
-import config from './lib/config'
-import List from './List'
-import {Spinner} from './common';
+import config from './lib/config';
+import List from './List';
+import { Spinner } from './common';
 
 const base = Rebase.createClass(config);
 
@@ -46,15 +46,14 @@ class Vendors extends Component {
   }
 
   render() {
-    const { isLoading, dataSource, data } = this.state;
+    const { isLoading, dataSource } = this.state;
 
     return !isLoading ?
         <ListView
           dataSource={dataSource}
           renderRow={(rowData) => this.renderRow(rowData)}
-        >
-        </ListView>
-        : <Spinner />
+        />
+        : <Spinner />;
   }
 }
 export default Vendors;

@@ -1,11 +1,47 @@
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
-import { Text } from 'react-native';
+import Rebase from 're-base';
+import config from './lib/config';
 import { Button, Card, CardSection, Input } from './common';
 
-//putting this nonsense here so there's something for a PR
+const base = Rebase.createClass(config);
 
 class Form extends Component {
+
+  state = { name: '', discription: '', distance: '', loading: false, error: false };
+
+  // submitNewVendor(){
+  //   const { name, discription, distance } = this.state;
+  //   var immediatelyAvailableReference = base.push('bears', {
+  //     data: { name: name, discription: discription, distance: distance },
+  //     then(err){
+  //       if(!err){
+  //         Router.transitionTo('dashboard');
+  //       }
+  //       console.log(this.state)
+  //     }
+  //   });
+  //   //available immediately, you don't have to wait for the callback to be called
+  //   var generatedKey = immediatelyAvailableReference.key;
+  // }
+
+  //Not sure if I should make vars const or let - not getting console log
+  submitNewVendor() {
+    const { name, discription, distance } = this.state;
+    console.log(this.state);
+    var immediatelyAvailableReference = base.push('vndr', {
+    data: { name: name, discription: discription, distance: distance }
+    }).then(newLocation => {
+    var generatedKey = newLocation.key;
+    console.log(newLocation.key)
+    }).catch(err => {
+    console.log("error " + this.state); //handle error
+    });
+    //available immediately, you don't have to wait for the Promise to resolve
+    var generatedKey = immediatelyAvailableReference.key
+    console.log(generatedKey)
+  }
+
   render() {
     return (
       <Card>
@@ -14,6 +50,8 @@ class Form extends Component {
           <Input
             placeholder=""
             label="Name:"
+            value={this.state.name}
+            onChangeText={text => this.setState({ name: text })}
           />
         </CardSection>
 
@@ -21,6 +59,8 @@ class Form extends Component {
           <Input
             placeholder=""
             label="Description:"
+            value={this.state.discription}
+            onChangeText={text => this.setState({ discription: text })}
           />
         </CardSection>
 
@@ -28,7 +68,13 @@ class Form extends Component {
           <Input
             placeholder=""
             label="Distance:"
+            value={this.state.distance}
+            onChangeText={text => this.setState({ distance: text })}
           />
+        </CardSection>
+
+        <CardSection>
+          <Button onPress={this.submitNewVendor.bind(this)}> SUBMIT </Button>
         </CardSection>
 
         <CardSection>
@@ -41,7 +87,8 @@ class Form extends Component {
 
       </Card>
 
-  )};
+    );
+  }
 }
 
 export default Form;
