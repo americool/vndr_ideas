@@ -1,8 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import Vendors from './Vendors';
 import { Button, Card, CardSection } from './common';
-import { Actions } from 'react-native-router-flux';
+
 
 const VndrList = () => {
   return (
@@ -11,7 +11,10 @@ const VndrList = () => {
         <Vendors />
       </CardSection>
       <CardSection>
-        <Button onPress={() => Actions.MapView()}> Map View </Button>
+        <Button onPress={() => Actions.map()}> Map View </Button>
+      </CardSection>
+      <CardSection>
+        <Button onPress={() => Actions.form()}> Add Vendor </Button>
       </CardSection>
     </Card>
   );
