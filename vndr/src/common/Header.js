@@ -3,14 +3,12 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 //make Component
-const List = ({ vendor }) => {
+const Header = (props) => {
   const { textStyle, viewStyle } = styles;
 
   return (
     <View style={viewStyle}>
-      <Text style={textStyle}>
-        {`${vendor.vndrName} | ${vendor.description} | ${vendor.distance} mi.`}
-      </Text>
+      <Text style={textStyle}>{ props.headerText }</Text>
     </View>
   );
 };
@@ -21,6 +19,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
+    paddingTop: 15,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2, },
     shadowOpacity: 0.2,
@@ -28,9 +27,9 @@ const styles = {
     position: 'relative'
   },
   textStyle: {
-    fontSize: 12
+    fontSize: 20
   }
 };
 
 // make the Component available to rest of application
-export default List;
+export { Header };
