@@ -8,29 +8,13 @@ const base = Rebase.createClass(config);
 
 class Form extends Component {
 
-  state = { name: '', discription: '', distance: '', loading: false, error: false };
+  state = { name: '', description: '', distance: '', loading: false, error: false };
 
-  // submitNewVendor(){
-  //   const { name, discription, distance } = this.state;
-  //   var immediatelyAvailableReference = base.push('bears', {
-  //     data: { name: name, discription: discription, distance: distance },
-  //     then(err){
-  //       if(!err){
-  //         Router.transitionTo('dashboard');
-  //       }
-  //       console.log(this.state)
-  //     }
-  //   });
-  //   //available immediately, you don't have to wait for the callback to be called
-  //   var generatedKey = immediatelyAvailableReference.key;
-  // }
-
-  //Not sure if I should make vars const or let - not getting console log
   submitNewVendor() {
-    const { name, discription, distance } = this.state;
+    const { name, description, distance } = this.state;
 
     base.push('vendors', {
-      data: { vndrName: name, description: discription, distance: distance } 
+      data: { vndrName: name, description: description, distance: distance } 
     })
   }
 
@@ -51,8 +35,8 @@ class Form extends Component {
           <Input
             placeholder=""
             label="Description:"
-            value={this.state.discription}
-            onChangeText={text => this.setState({ discription: text })}
+            value={this.state.description}
+            onChangeText={text => this.setState({ description: text })}
           />
         </CardSection>
 
