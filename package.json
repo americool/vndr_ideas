@@ -17,10 +17,20 @@
     "babel-jest": "18.0.0",
     "babel-preset-react-native": "1.9.1",
     "eslint-config-rallycoding": "^3.1.0",
+    "enzyme": "^2.7.0",
     "jest": "18.0.0",
-    "react-test-renderer": "15.4.1"
+    "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-test-renderer": "15.4.1",
+    "react-test-utils": "^0.0.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "testRegex": "./test/[^setup].*.js$",
+    "mocksPattern": "./test/mocks/.*.js$",
+    "transformIgnorePatterns": ["node_modules/(?!react-native|native-base|react-clone-referenced-element)"],
+    "setupFiles": [
+        "./test/setup.js"
+    ]
   }
 }
