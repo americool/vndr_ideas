@@ -28,10 +28,22 @@ class Vendors extends Component {
       context: this,
       asArray: true
     }).then(data => {
+      console.log(data);
+
+      const sortedData = data.sort((a, b) => {
+        if (a.distance < b.distance) {
+          return -1;
+        }
+        if (a.distance > b.distance) {
+          return 1;
+        }
+        return 0;
+      });
+
      this.setState({
-       data: data,
+       data: sortedData,
        isLoading: false,
-       dataSource: this.ds.cloneWithRows(data)
+       dataSource: this.ds.cloneWithRows(sortedData)
      });
     }).catch(error => {
       console.error(error);

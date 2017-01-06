@@ -14,7 +14,10 @@ class Form extends Component {
     const { name, description, distance } = this.state;
 
     base.push('vendors', {
-      data: { vndrName: name.trim(), description: description.trim(), distance: distance.trim() }
+      data: {
+        vndrName: name.trim(),
+        description: description.trim(),
+        distance: parseFloat(distance.trim()) }
     }).then(
       Actions.list()
     );
