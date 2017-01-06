@@ -14,7 +14,7 @@ class Form extends Component {
     const { name, description, distance } = this.state;
 
     base.push('vendors', {
-      data: { vndrName: name, description: description, distance: distance }
+      data: { vndrName: name.trim(), description: description.trim(), distance: distance.trim() }
     }).then(
       Actions.list()
     );
