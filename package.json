@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "firebase": "3.6.4",
+    "jest": "^18.0.0",
+    "jest-cli": "^18.1.0",
     "re-base": "^2.5.2",
     "react": "15.4.1",
     "react-native": "0.39.2",
@@ -16,8 +18,8 @@
   "devDependencies": {
     "babel-jest": "18.0.0",
     "babel-preset-react-native": "1.9.1",
-    "eslint-config-rallycoding": "^3.1.0",
     "enzyme": "^2.7.0",
+    "eslint-config-rallycoding": "^3.1.0",
     "jest": "18.0.0",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -28,9 +30,11 @@
     "preset": "react-native",
     "testRegex": "./test/[^setup].*.js$",
     "mocksPattern": "./test/mocks/.*.js$",
-    "transformIgnorePatterns": ["node_modules/(?!react-native|native-base|react-clone-referenced-element)"],
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|native-base|react-clone-referenced-element)"
+    ],
     "setupFiles": [
-        "./test/setup.js"
+      "./test/setup.js"
     ]
   }
 }
