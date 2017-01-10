@@ -42,4 +42,4 @@ android/app/libs
 *.keystore
 
 # CONFIG
-src/lib/config.js
+.env
