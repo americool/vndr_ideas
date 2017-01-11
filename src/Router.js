@@ -1,7 +1,7 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
 import VndrList from './VndrList';
-import MapView from './MapView';
+import ViewMap from './ViewMap';
 import Form from './Form';
 
 const RouterComponent = () => {
@@ -12,7 +12,7 @@ const RouterComponent = () => {
       </Scene>
 
       <Scene key="map">
-        <Scene key="MapView" component={MapView} title="Map View" />
+        <Scene key="ViewMap" component={ViewMap} title="Map View" />
       </Scene>
 
       <Scene key="form">

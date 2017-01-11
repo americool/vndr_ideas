@@ -28,7 +28,6 @@ class Vendors extends Component {
       context: this,
       asArray: true
     }).then(data => {
-      console.log(data);
 
       const sortedData = data.sort((a, b) => {
         if (a.distance < b.distance) {
