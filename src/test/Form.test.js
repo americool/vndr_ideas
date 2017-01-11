@@ -12,7 +12,6 @@ it('renders without crashing', () => {
 it('updates state when value is changed', () => {
   const wrapper = shallow (<Form />);
   const name_input = wrapper.find(".name-input");
-  // console.log(x.node.props)
   name_input.node.props.onChangeText("test")
   expect(wrapper.state().name).toEqual("test");
 });
