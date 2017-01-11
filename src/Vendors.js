@@ -4,6 +4,7 @@ import Rebase from 're-base';
 import config from './lib/config';
 import List from './List';
 import { Spinner } from './common';
+import { sortBy } from './helpers/sorted';
 
 const base = Rebase.createClass(config);
 
@@ -28,17 +29,7 @@ class Vendors extends Component {
       context: this,
       asArray: true
     }).then(data => {
-
-      const sortedData = data.sort((a, b) => {
-        if (a.distance < b.distance) {
-          return -1;
-        }
-        if (a.distance > b.distance) {
-          return 1;
-        }
-        return 0;
-      });
-
+      const sortedData = sortBy(data, 'distance');
      this.setState({
        data: sortedData,
        isLoading: false,

@@ -29,6 +29,7 @@ class Form extends Component {
 
         <CardSection>
           <Input
+            className="name-input"
             placeholder=""
             label="Name:"
             value={this.state.name}
