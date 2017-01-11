@@ -11,7 +11,7 @@ const dummyVendor = {
 
 
 it('renders without crashing', () => {
-  const wrapper = shallow (<List vendor={dummyVendor} />);
+  const wrapper = shallow(<List vendor={dummyVendor} />);
   expect(wrapper).toExist;
 });
 
