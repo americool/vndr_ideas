@@ -5,7 +5,6 @@ import { Text, View } from 'react-native';
 //make Component
 const List = ({ vendor }) => {
   const { textStyle, viewStyle } = styles;
-
   return (
     <View style={viewStyle}>
       <Text style={textStyle}>
