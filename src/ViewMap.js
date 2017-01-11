@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import { Button, Card, CardSection } from './common';
 
 class ViewMap extends Component {
-  componetDidMount() {
+  componentDidMount() {
     console.log('Mounted');
     navigator.geolocation.getCurrentPosition(
       (position) => {
