@@ -3,21 +3,59 @@ import { Actions } from 'react-native-router-flux';
 import Rebase from 're-base';
 import config from './lib/config';
 import { Button, Card, CardSection, Input } from './common';
+import { getDistance } from './helpers/calculateDistance';
 
 const base = Rebase.createClass(config);
 
 class Form extends Component {
 
-  state = { name: '', description: '', distance: '', loading: false, error: false };
+  state = {
+    name: '',
+    description: '',
+    distance: '',
+    vendLatitude: '',
+    vendLongitude: '',
+    userLatitude: '',
+    userLongitude: '',
+    loading: false,
+    error: false
+  };
+
+  componentDidMount() {
+    console.log('Mounted');
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          userLatitude: position.coords.latitude,
+          userLongitude: position.coords.longitude
+        });
+      }
+    );
+  }
 
   submitNewVendor() {
-    const { name, description, distance } = this.state;
+    const {
+      name,
+      description,
+      userLatitude,
+      userLongitude,
+    } = this.state;
+
+    let {
+      vendLatitude,
+      vendLongitude
+    } = this.state;
+
+    vendLatitude = parseFloat(vendLatitude.trim());
+    vendLongitude = parseFloat(vendLongitude.trim());
+    const calcDistance =
+    getDistance(userLatitude, userLongitude, vendLatitude, vendLongitude).toFixed(2);
 
     base.push('vendors', {
       data: {
         vndrName: name.trim(),
         description: description.trim(),
-        distance: parseFloat(distance.trim()) }
+        distance: calcDistance }
     }).then(
       Actions.list()
     );
@@ -49,9 +87,18 @@ class Form extends Component {
         <CardSection>
           <Input
             placeholder=""
-            label="Distance:"
-            value={this.state.distance}
-            onChangeText={text => this.setState({ distance: text })}
+            label="Latitude:"
+            value={this.state.vendLatitude}
+            onChangeText={text => this.setState({ vendLatitude: text })}
+          />
+        </CardSection>
+
+        <CardSection>
+          <Input
+            placeholder=""
+            label="Longitude:"
+            value={this.state.vendLongitude}
+            onChangeText={text => this.setState({ vendLongitude: text })}
           />
         </CardSection>
 
