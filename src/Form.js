@@ -54,7 +54,10 @@ class Form extends Component {
       data: {
         vndrName: name.trim(),
         description: description.trim(),
-        distance: calcDistance }
+        distance: calcDistance,
+        latitude: parseFloat(vendLatitude.trim()),
+        longitude: parseFloat(vendLongitude.trim())
+       }
     }).then(
       Actions.list()
     );
