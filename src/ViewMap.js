@@ -4,6 +4,7 @@ import MapView from 'react-native-maps';
 import Rebase from 're-base';
 import config from './lib/config';
 import { Button, Card, CardSection, Spinner } from './common';
+import { sortMapData } from './helpers/pickMapData';
 
 const base = Rebase.createClass(config);
 
@@ -11,7 +12,7 @@ class ViewMap extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { data: null, isLoading: false, userLatitude: 37.78825, userLongitude: -122.4324 };
+    this.state = { data: [], isLoading: false, userLatitude: 37.78825, userLongitude: -122.4324 };
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState(
@@ -33,8 +34,9 @@ class ViewMap extends Component {
       context: this,
       asArray: true
     }).then(data => {
+      const usableData = sortMapData(data);
      this.setState({
-       data: data,
+       data: usableData,
        isLoading: false,
      });
     }).catch(error => {
@@ -45,21 +47,6 @@ class ViewMap extends Component {
 
 
   renderMap() {
-    renderMarkers(vendor) {
-      if (vendor.latitude && vendor.longitude) {
-        return (
-          <MapView.Marker
-            coordinate={{
-              latitude: vendor.latitude,
-              longitude: vendor.longitude
-            }}
-            title={vendor.vndrName}
-            description={vendor.description}
-          />
-        );
-      }
-    }
-
     if (this.state.isLoading) {
       return <Spinner />;
     }
@@ -75,7 +62,14 @@ class ViewMap extends Component {
       }}
       >
         {this.state.data.map(vendor => (
-          {this.renderMarkers(vendor)}
+          <MapView.Marker
+          coordinate={{
+            latitude: vendor.latitude,
+            longitude: vendor.longitude
+          }}
+          title={vendor.vndrName}
+          description={vendor.description}
+          />
         ))}
       </MapView>
     );
