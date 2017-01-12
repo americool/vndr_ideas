@@ -39,17 +39,16 @@ class Form extends Component {
       description,
       userLatitude,
       userLongitude,
-    } = this.state;
-
-    let {
       vendLatitude,
       vendLongitude
     } = this.state;
 
-    vendLatitude = parseFloat(vendLatitude.trim());
-    vendLongitude = parseFloat(vendLongitude.trim());
     const calcDistance =
-    getDistance(userLatitude, userLongitude, vendLatitude, vendLongitude).toFixed(2);
+    getDistance(
+      userLatitude,
+      userLongitude,
+      parseFloat(vendLatitude.trim()), parseFloat(vendLongitude.trim())
+    ).toFixed(2);
 
     base.push('vendors', {
       data: {
