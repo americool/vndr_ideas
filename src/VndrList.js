@@ -9,11 +9,11 @@ const VndrList = () => {
   return (
 
     <Card>
-    <ScrollView>
-      <CardSection>
-        <Vendors />
-      </CardSection>
-    </ScrollView>
+      <ScrollView>
+        <CardSection>
+          <Vendors />
+        </CardSection>
+      </ScrollView>
       <CardSection>
         <Button onPress={() => Actions.map()}> Map View </Button>
       </CardSection>

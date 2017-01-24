@@ -16,30 +16,30 @@ class ViewMap extends Component {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState(
-        {
-          userLatitude: position.coords.latitude,
-          userLongitude: position.coords.longitude
-        });
-      }
+          {
+            userLatitude: position.coords.latitude,
+            userLongitude: position.coords.longitude,
+          });
+      },
     );
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true });
     this.fetchData();
   }
 
   fetchData() {
+    this.setState({ isLoading: true });
     base.fetch('vendors', {
       context: this,
-      asArray: true
-    }).then(data => {
+      asArray: true,
+    }).then((data) => {
       const usableData = sortMapData(data);
-     this.setState({
-       data: usableData,
-       isLoading: false,
-     });
-    }).catch(error => {
+      this.setState({
+        data: usableData,
+        isLoading: false,
+      });
+    }).catch((error) => {
       console.error(error);
       this.setState({ isLoading: false });
     });
@@ -52,23 +52,23 @@ class ViewMap extends Component {
     }
     return (
       <MapView
-      style={{ flex: 1, height: 450 }}
-      showsUserLocation
-      initialRegion={{
-        latitude: this.state.userLatitude,
-        longitude: this.state.userLongitude,
-        latitudeDelta: 0.019,
-        longitudeDelta: 0.019,
-      }}
+        style={{ flex: 1, height: 450 }}
+        showsUserLocation
+        initialRegion={{
+          latitude: this.state.userLatitude,
+          longitude: this.state.userLongitude,
+          latitudeDelta: 0.019,
+          longitudeDelta: 0.019,
+        }}
       >
         {this.state.data.map(vendor => (
           <MapView.Marker
-          coordinate={{
-            latitude: vendor.latitude,
-            longitude: vendor.longitude
-          }}
-          title={vendor.vndrName}
-          description={vendor.description}
+            coordinate={{
+              latitude: vendor.latitude,
+              longitude: vendor.longitude,
+            }}
+            title={vendor.vndrName}
+            description={vendor.description}
           />
         ))}
       </MapView>
@@ -76,7 +76,6 @@ class ViewMap extends Component {
   }
 
   render() {
-    console.log(this.state.data);
     return (
       <Card>
         <CardSection>

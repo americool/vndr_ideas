@@ -8,28 +8,29 @@ import { getDistance } from './helpers/calculateDistance';
 const base = Rebase.createClass(config);
 
 class Form extends Component {
-
-  state = {
-    name: '',
-    description: '',
-    distance: '',
-    vendLatitude: '',
-    vendLongitude: '',
-    userLatitude: '',
-    userLongitude: '',
-    loading: false,
-    error: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      description: '',
+      distance: '',
+      vendLatitude: '',
+      vendLongitude: '',
+      userLatitude: '',
+      userLongitude: '',
+      loading: false,
+      error: false,
+    };
+  }
 
   componentDidMount() {
-    console.log('Mounted');
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
           userLatitude: position.coords.latitude,
-          userLongitude: position.coords.longitude
+          userLongitude: position.coords.longitude,
         });
-      }
+      },
     );
   }
 
@@ -40,14 +41,14 @@ class Form extends Component {
       userLatitude,
       userLongitude,
       vendLatitude,
-      vendLongitude
+      vendLongitude,
     } = this.state;
 
     const calcDistance =
     getDistance(
       userLatitude,
       userLongitude,
-      parseFloat(vendLatitude.trim()), parseFloat(vendLongitude.trim())
+      parseFloat(vendLatitude.trim()), parseFloat(vendLongitude.trim()),
     ).toFixed(2);
 
     base.push('vendors', {
@@ -56,10 +57,10 @@ class Form extends Component {
         description: description.trim(),
         distance: calcDistance,
         latitude: parseFloat(vendLatitude.trim()),
-        longitude: parseFloat(vendLongitude.trim())
-       }
+        longitude: parseFloat(vendLongitude.trim()),
+      },
     }).then(
-      Actions.list()
+      Actions.list(),
     );
   }
 

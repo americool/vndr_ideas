@@ -20,22 +20,22 @@ class Vendors extends Component {
   }
 
   componentDidMount() {
-    this.setState({ isLoading: true });
     this.fetchData();
   }
 
   fetchData() {
+    this.setState({ isLoading: true });
     base.fetch('vendors', {
       context: this,
-      asArray: true
-    }).then(data => {
+      asArray: true,
+    }).then((data) => {
       const sortedData = sortBy(data, 'distance');
-     this.setState({
-       data: sortedData,
-       isLoading: false,
-       dataSource: this.ds.cloneWithRows(sortedData)
-     });
-    }).catch(error => {
+      this.setState({
+        data: sortedData,
+        isLoading: false,
+        dataSource: this.ds.cloneWithRows(sortedData),
+      });
+    }).catch((error) => {
       console.error(error);
       this.setState({ isLoading: false });
     });
@@ -51,10 +51,10 @@ class Vendors extends Component {
     const { isLoading, dataSource } = this.state;
 
     return !isLoading ?
-        <ListView
-          dataSource={dataSource}
-          renderRow={(rowData) => this.renderRow(rowData)}
-        />
+      <ListView
+        dataSource={dataSource}
+        renderRow={rowData => this.renderRow(rowData)}
+      />
         : <Spinner />;
   }
 }

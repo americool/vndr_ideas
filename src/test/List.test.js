@@ -16,6 +16,6 @@ it('renders without crashing', () => {
 });
 
 it('displays vendor name/descrip/etc', () => {
-  const wrapper = shallow (<List vendor={dummyVendor} />);
+  const wrapper = shallow(<List vendor={dummyVendor} />);
   expect(wrapper.props().children.props.children).toEqual('fake | even faker | 2 mi.');
 });

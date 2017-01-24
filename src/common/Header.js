@@ -1,8 +1,8 @@
-//import libraries for making a Component
+// import libraries for making a Component
 import React from 'react';
 import { Text, View } from 'react-native';
 
-//make Component
+// make Component
 const Header = (props) => {
   const { textStyle, viewStyle } = styles;
 
@@ -21,14 +21,14 @@ const styles = {
     height: 60,
     paddingTop: 15,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2, },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     elevation: 2,
-    position: 'relative'
+    position: 'relative',
   },
   textStyle: {
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 };
 
 // make the Component available to rest of application

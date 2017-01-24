@@ -3,23 +3,23 @@ import { sortBy } from '../helpers/sorted';
 const fakeObjects = [
   {
     value: 'Two',
-    sortIndex: 0.2
+    sortIndex: 0.2,
   },
   {
     value: 'Three',
-    sortIndex: 0.3
+    sortIndex: 0.3,
   },
   {
     value: 'One',
-    sortIndex: 0.1
+    sortIndex: 0.1,
   },
   {
     value: 'Five',
-    sortIndex: 0.5
+    sortIndex: 0.5,
   },
   {
     value: 'Four',
-    sortIndex: 0.4
+    sortIndex: 0.4,
   },
 ];
 

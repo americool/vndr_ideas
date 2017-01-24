@@ -3,6 +3,6 @@ import { shallow } from 'enzyme';
 import VndrList from '../VndrList';
 
 it('renders without crashing', () => {
-  const wrapper = shallow (<VndrList />);
+  const wrapper = shallow(<VndrList />);
   expect(wrapper).toExist;
 });
