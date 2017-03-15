@@ -1,8 +1,8 @@
-//import libraries for making a Component
+// import libraries for making a Component
 import React from 'react';
 import { Text, View } from 'react-native';
 
-//make Component
+// make Component
 const List = ({ vendor }) => {
   const { textStyle, viewStyle } = styles;
   return (
@@ -21,14 +21,14 @@ const styles = {
     alignItems: 'center',
     height: 60,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2, },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     elevation: 2,
-    position: 'relative'
+    position: 'relative',
   },
   textStyle: {
-    fontSize: 12
-  }
+    fontSize: 12,
+  },
 };
 
 // make the Component available to rest of application

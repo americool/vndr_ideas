@@ -1,3 +1,4 @@
+/* eslint-disable */
 jest.mock('Linking', () => {
   return {
     addEventListener: jest.fn(),
@@ -5,5 +6,5 @@ jest.mock('Linking', () => {
     openURL: jest.fn(),
     canOpenURL: jest.fn(),
     getInitialURL: jest.fn(),
-  }
-})
+  };
+});

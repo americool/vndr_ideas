@@ -1,9 +1,9 @@
-export function sortBy (data, sortBy) { // [] , 'distance'
+export function sortBy(data, sortType) { // [] , 'distance'
   const sortedData = data.sort((a, b) => {
-    if (a[sortBy] < b[sortBy]) {
+    if (a[sortType] < b[sortType]) {
       return -1;
     }
-    if (a[sortBy] > b[sortBy]) {
+    if (a[sortType] > b[sortType]) {
       return 1;
     }
     return 0;

@@ -5,7 +5,7 @@ const base = Rebase.createClass(config);
 
 export function fetchData(lib, context) {
   base.fetch(lib, {
-    context: context,
-    asArray: true
+    context,
+    asArray: true,
   });
-};
+}

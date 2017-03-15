@@ -1,3 +1,5 @@
+/* global navigator */
+
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import Rebase from 're-base';
@@ -8,28 +10,30 @@ import { getDistance } from './helpers/calculateDistance';
 const base = Rebase.createClass(config);
 
 class Form extends Component {
-
-  state = {
-    name: '',
-    description: '',
-    distance: '',
-    vendLatitude: '',
-    vendLongitude: '',
-    userLatitude: '',
-    userLongitude: '',
-    loading: false,
-    error: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      description: '',
+      distance: '',
+      vendLatitude: '',
+      vendLongitude: '',
+      userLatitude: '',
+      userLongitude: '',
+      loading: false,
+      error: false,
+    };
+    this.submitNewVendor = this.submitNewVendor.bind(this);
+  }
 
   componentDidMount() {
-    console.log('Mounted');
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
           userLatitude: position.coords.latitude,
-          userLongitude: position.coords.longitude
+          userLongitude: position.coords.longitude,
         });
-      }
+      },
     );
   }
 
@@ -40,14 +44,14 @@ class Form extends Component {
       userLatitude,
       userLongitude,
       vendLatitude,
-      vendLongitude
+      vendLongitude,
     } = this.state;
 
     const calcDistance =
     getDistance(
       userLatitude,
       userLongitude,
-      parseFloat(vendLatitude.trim()), parseFloat(vendLongitude.trim())
+      parseFloat(vendLatitude.trim()), parseFloat(vendLongitude.trim()),
     ).toFixed(2);
 
     base.push('vendors', {
@@ -56,10 +60,10 @@ class Form extends Component {
         description: description.trim(),
         distance: calcDistance,
         latitude: parseFloat(vendLatitude.trim()),
-        longitude: parseFloat(vendLongitude.trim())
-       }
+        longitude: parseFloat(vendLongitude.trim()),
+      },
     }).then(
-      Actions.list()
+      Actions.list(),
     );
   }
 
@@ -105,7 +109,7 @@ class Form extends Component {
         </CardSection>
 
         <CardSection>
-          <Button onPress={this.submitNewVendor.bind(this)}> SUBMIT </Button>
+          <Button onPress={this.submitNewVendor}> SUBMIT </Button>
         </CardSection>
 
         <CardSection>
