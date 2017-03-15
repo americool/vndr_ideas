@@ -1,3 +1,5 @@
+/* global navigator */
+
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import Rebase from 're-base';
@@ -21,6 +23,7 @@ class Form extends Component {
       loading: false,
       error: false,
     };
+    this.submitNewVendor = this.submitNewVendor.bind(this);
   }
 
   componentDidMount() {
@@ -106,7 +109,7 @@ class Form extends Component {
         </CardSection>
 
         <CardSection>
-          <Button onPress={this.submitNewVendor.bind(this)}> SUBMIT </Button>
+          <Button onPress={this.submitNewVendor}> SUBMIT </Button>
         </CardSection>
 
         <CardSection>

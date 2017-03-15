@@ -1,3 +1,4 @@
+/* global navigator */
 import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 import MapView from 'react-native-maps';
@@ -39,8 +40,7 @@ class ViewMap extends Component {
         data: usableData,
         isLoading: false,
       });
-    }).catch((error) => {
-      console.error(error);
+    }).catch(() => {
       this.setState({ isLoading: false });
     });
   }
@@ -63,6 +63,7 @@ class ViewMap extends Component {
       >
         {this.state.data.map(vendor => (
           <MapView.Marker
+            key={vendor.key}
             coordinate={{
               latitude: vendor.latitude,
               longitude: vendor.longitude,

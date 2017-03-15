@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { sortBy } from '../helpers/sorted';
 
 const fakeObjects = [

@@ -9,6 +9,12 @@ import { sortBy } from './helpers/sorted';
 const base = Rebase.createClass(config);
 
 class Vendors extends Component {
+  static renderRow(rowData) {
+    return (
+      <List vendor={rowData} />
+    );
+  }
+
   constructor(props) {
     super(props);
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -35,17 +41,11 @@ class Vendors extends Component {
         isLoading: false,
         dataSource: this.ds.cloneWithRows(sortedData),
       });
-    }).catch((error) => {
-      console.error(error);
+    }).catch(() => {
       this.setState({ isLoading: false });
     });
   }
 
-  renderRow(rowData) {
-    return (
-      <List vendor={rowData} />
-    );
-  }
 
   render() {
     const { isLoading, dataSource } = this.state;
@@ -53,7 +53,7 @@ class Vendors extends Component {
     return !isLoading ?
       <ListView
         dataSource={dataSource}
-        renderRow={rowData => this.renderRow(rowData)}
+        renderRow={rowData => Vendors.renderRow(rowData)}
       />
         : <Spinner />;
   }

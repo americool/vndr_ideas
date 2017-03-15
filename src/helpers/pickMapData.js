@@ -1,7 +1,5 @@
 function hasLatAndLong(value) {
-  if (value.longitude && value.latitude) {
-    return true;
-  }
+  return value.longitude && value.latitude;
 }
 
 export function sortMapData(data) { // [] , 'distance'

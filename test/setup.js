@@ -1,3 +1,4 @@
+/* eslint-disable */
 jest.mock('Linking', () => {
   return {
     addEventListener: jest.fn(),
